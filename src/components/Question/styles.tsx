@@ -50,14 +50,6 @@ export const OptionWrapper = styled.div`
   }
 `;
 
-export const Option = styled.div<{ size?: number }>`
-  width: ${(props) => props.size}px;
-  height: ${(props) => props.size}px;
-  border-radius: 50%;
-  border: 3px solid;
-  transition: 0.2s;
-`;
-
 export const DecisionWrapper = styled.div`
   display: flex;
   width: 800px;

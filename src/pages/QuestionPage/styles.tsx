@@ -27,3 +27,11 @@ export const CompleteButton = styled.button`
   padding: 10px 80px;
   margin: 50px auto;
 `;
+
+export const Option = styled.div<{ size?: number }>`
+  width: ${(props) => props.size}px;
+  height: ${(props) => props.size}px;
+  border-radius: 50%;
+  border: 3px solid;
+  transition: 0.2s;
+`;
