@@ -15,39 +15,6 @@ export const OptionWrapper = styled.div`
   width: 600px;
   justify-content: space-between;
   align-items: center;
-
-  .neutral {
-    width: 25px;
-    height: 25px;
-    border-color: lightgray;
-    :hover {
-      background: lightgray;
-    }
-  }
-  .min {
-    width: 40px;
-    height: 40px;
-  }
-  .mid {
-    width: 55px;
-    height: 55px;
-  }
-  .max {
-    width: 70px;
-    height: 70px;
-  }
-  .agree {
-    border-color: #2ecc71;
-    :hover {
-      background: #2ecc71;
-    }
-  }
-  .disagree {
-    border-color: #de3163;
-    :hover {
-      background: #de3163;
-    }
-  }
 `;
 
 export const DecisionWrapper = styled.div`
