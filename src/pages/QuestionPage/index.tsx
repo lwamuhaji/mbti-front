@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import Question from 'components/Question';
 import { CompleteButton, Header, QuestionWrapper, Option } from './styles';
+import { useParams } from 'react-router-dom';
 
 interface IQuestion {
   id: number;
   statement: string;
 }
 
+interface IAnswers {
+  [question_id: number]: number;
+}
+
 function QuestionPage() {
-  const [answers, setAnswers] = useState({});
+  const a = useParams();
+  const [answers, setAnswers] = useState<IAnswers>({});
   const [questions, setQuestions] = useState<IQuestion[]>([
     { id: 0, statement: 'Ut enim ad minim veniam.' },
     { id: 1, statement: 'Ut enim ad minim veniam.' },
@@ -19,7 +25,10 @@ function QuestionPage() {
     setAnswers({ ...answers, [question_id]: option_id });
   };
 
-  const onClickCompleteButton = () => {};
+  const onClickCompleteButton = () => {
+    // Check if the answers of the questions are all set.
+    if (Object.keys(answers).length !== questions.length) return;
+  };
 
   return (
     <>
@@ -35,13 +44,34 @@ function QuestionPage() {
       <QuestionWrapper>
         {questions.map((question) => (
           <Question key={question.id} statement={question.statement}>
-            <Option className="max agree" onClick={() => onClickOption(question.id, 0)}></Option>
-            <Option className="mid agree" onClick={() => onClickOption(question.id, 1)}></Option>
-            <Option className="min agree" onClick={() => onClickOption(question.id, 2)}></Option>
-            <Option className="neutral" onClick={() => onClickOption(question.id, 3)}></Option>
-            <Option className="min disagree" onClick={() => onClickOption(question.id, 4)}></Option>
-            <Option className="mid disagree" onClick={() => onClickOption(question.id, 5)}></Option>
-            <Option className="max disagree" onClick={() => onClickOption(question.id, 6)}></Option>
+            <Option
+              className={`max agree ${answers[question.id] === 0 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 0)}
+            ></Option>
+            <Option
+              className={`mid agree ${answers[question.id] === 1 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 1)}
+            ></Option>
+            <Option
+              className={`min agree ${answers[question.id] === 2 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 2)}
+            ></Option>
+            <Option
+              className={`neutral ${answers[question.id] === 3 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 3)}
+            ></Option>
+            <Option
+              className={`min disagree ${answers[question.id] === 4 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 4)}
+            ></Option>
+            <Option
+              className={`mid disagree ${answers[question.id] === 5 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 5)}
+            ></Option>
+            <Option
+              className={`max disagree ${answers[question.id] === 6 ? 'checked' : ''}`}
+              onClick={() => onClickOption(question.id, 6)}
+            ></Option>
           </Question>
         ))}
       </QuestionWrapper>
