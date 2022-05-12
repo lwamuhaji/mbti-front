@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Question from 'components/Question';
 import { CompleteButton, Header, QuestionWrapper, Option } from './styles';
 import { useParams } from 'react-router-dom';
-
-interface IQuestion {
-  id: number;
-  statement: string;
-}
-
-interface IAnswers {
-  [question_id: number]: number;
-}
+import { useQuery } from 'react-query';
+import { getSurvey } from 'apis';
+import { IAnswers, ISurvey } from 'types/db';
+import axios from 'axios';
 
 function QuestionPage() {
-  const a = useParams();
+  const { surveyId } = useParams();
+  const {
+    isLoading: isSurveyLoading,
+    isError: isSurveyError,
+    data: surveyData,
+    error: surveyError,
+  } = useQuery<ISurvey, Error>(['survey', surveyId], getSurvey, {
+    refetchOnWindowFocus: false,
+  });
   const [answers, setAnswers] = useState<IAnswers>({});
-  const [questions, setQuestions] = useState<IQuestion[]>([
-    { id: 0, statement: 'Ut enim ad minim veniam.' },
-    { id: 1, statement: 'Ut enim ad minim veniam.' },
-    { id: 2, statement: 'Ut enim ad minim veniam.' },
-  ]);
+
+  useEffect(() => {});
 
   const onClickOption = (question_id: number, option_id: number) => {
     setAnswers({ ...answers, [question_id]: option_id });
@@ -27,8 +27,14 @@ function QuestionPage() {
 
   const onClickCompleteButton = () => {
     // Check if the answers of the questions are all set.
-    if (Object.keys(answers).length !== questions.length) return;
+    if (Object.keys(answers).length !== surveyData?.questions.length) return;
+
+    // Post answers
   };
+
+  if (isSurveyLoading) return <div>Loading</div>;
+
+  if (isSurveyError) return <div>{surveyError.message}</div>;
 
   return (
     <>
@@ -42,7 +48,7 @@ function QuestionPage() {
         <input placeholder="너의 베스트프랜드" />
       </Header>
       <QuestionWrapper>
-        {questions.map((question) => (
+        {surveyData?.questions.map((question) => (
           <Question key={question.id} statement={question.statement}>
             <Option
               className={`max agree ${answers[question.id] === 0 ? 'checked' : ''}`}
