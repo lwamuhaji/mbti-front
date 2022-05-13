@@ -15,7 +15,7 @@ function App() {
             <Route path="/" element={<div>hi</div>}></Route>
             <Route path="test/*" element={<QuestionLayout />}>
               <Route path=":surveyId" element={<QuestionPage />}></Route>
-              <Route path=":surveyId/share" element={<CompletePage />}></Route>
+              <Route path=":surveyId/complete" element={<CompletePage />}></Route>
             </Route>
             <Route path="*" element={<h1>NotFound</h1>}></Route>
           </Routes>
