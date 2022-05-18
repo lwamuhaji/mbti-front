@@ -2,7 +2,7 @@ export interface ISurvey {
   id: string;
   title: string;
   date: Date;
-  questions: Array<IQuestion>;
+  questions: IQuestion[];
 }
 
 export interface IQuestion {
