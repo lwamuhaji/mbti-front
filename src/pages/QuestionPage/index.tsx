@@ -16,7 +16,7 @@ function QuestionPage() {
     isError: isSurveyError,
     data: surveyData,
     error: surveyError,
-  } = useQuery<ISurvey, Error>(['survey', surveyId], getSurvey, {
+  } = useQuery<ISurvey, Error>(['surveys', surveyId], getSurvey, {
     refetchOnWindowFocus: false,
   });
   const [answers, setAnswers] = useState<IAnswers>({});
