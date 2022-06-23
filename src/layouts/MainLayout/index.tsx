@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer, Header } from './styles';
 import { Outlet } from 'react-router-dom';
 
-function TestLayout() {
+function MainLayout() {
   return (
     <>
       <Header>
@@ -19,4 +19,4 @@ function TestLayout() {
   );
 }
 
-export default TestLayout;
+export default MainLayout;
