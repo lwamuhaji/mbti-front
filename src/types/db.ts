@@ -17,6 +17,11 @@ export interface IAnswers {
 export interface IAnswerSheet {
   id: number;
   survey_id: string; // foreign_key(uuid)
-  data: Date;
+  date: Date;
+  answerer: string;
   answers: IAnswers;
+}
+
+export interface ISurveyResponse extends ISurvey {
+  responses: IAnswerSheet[];
 }
