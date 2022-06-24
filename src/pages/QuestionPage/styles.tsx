@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  .option {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+  }
+`;
+
 export const Header = styled.div`
   margin: 0 auto;
   hegiht: 100px;
   text-align: center;
   border-bottom: 1px solid lightgray;
   padding-bottom: 50px;
-
-  & :first-child {
-    margin: 50px 0;
-    font-size: 3rem;
-  }
 `;
 
 export const QuestionWrapper = styled.div`

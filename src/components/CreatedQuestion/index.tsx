@@ -1,6 +1,8 @@
 import React from 'react';
 import { IQuestion } from 'types/db';
 import { Wrapper } from './styles';
+import { MdDelete } from 'react-icons/md';
+import { relative } from 'path';
 
 interface Props {
   question: IQuestion;
@@ -12,7 +14,7 @@ function CreatedQuestion({ question, onClickDeleteButton, onChangeStatement }: P
   return (
     <Wrapper>
       <input value={question.statement} onChange={onChangeStatement} />
-      <button onClick={onClickDeleteButton}>삭제하기</button>
+      <MdDelete size={24} color="gray" onClick={onClickDeleteButton} />
     </Wrapper>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Question from 'components/Question';
-import { CompleteButton, Header, QuestionWrapper, Option } from './styles';
+import { CompleteButton, Header, QuestionWrapper, Option, Wrapper } from './styles';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getSurvey } from 'apis';
@@ -71,52 +71,45 @@ function QuestionPage() {
 
   if (!isIResponses(surveyData) && isISurvey(surveyData)) {
     return (
-      <>
-        <Header>
-          <p>친구가 당신에게 낸 문제를 풀어보세요!</p>
-          <p>
-            이 친구에 대해 얼마나 자세히 알고 계신가요? 친구가 낸 문제를 풀어보세요. 답한 내용은 아래의 별명과 함께
-            전달됩니다.
-          </p>
-          <span>친구에게 보여질 별명을 정해주세요:</span>
-          <input placeholder="너의 베스트프랜드" onChange={onChangeAnswerer} />
-        </Header>
-        <QuestionWrapper>
+      <Wrapper>
+        <span>별명:</span>
+        <input placeholder="너의 베스트프랜드" onChange={onChangeAnswerer} />
+        <div>
           {surveyData?.questions.map((question) => (
             <Question key={question.id} statement={question.statement}>
-              <Option
-                className={`max agree ${answers[question.id] === 1 ? 'checked' : ''}`}
+              <div
+                className={`option max agree ${answers[question.id] === 1 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 1)}
-              ></Option>
-              <Option
-                className={`mid agree ${answers[question.id] === 2 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option mid agree ${answers[question.id] === 2 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 2)}
-              ></Option>
-              <Option
-                className={`min agree ${answers[question.id] === 3 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option min agree ${answers[question.id] === 3 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 3)}
-              ></Option>
-              <Option
-                className={`neutral ${answers[question.id] === 4 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option neutral ${answers[question.id] === 4 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 4)}
-              ></Option>
-              <Option
-                className={`min disagree ${answers[question.id] === 5 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option min disagree ${answers[question.id] === 5 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 5)}
-              ></Option>
-              <Option
-                className={`mid disagree ${answers[question.id] === 6 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option mid disagree ${answers[question.id] === 6 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 6)}
-              ></Option>
-              <Option
-                className={`max disagree ${answers[question.id] === 7 ? 'checked' : ''}`}
+              ></div>
+              <div
+                className={`option max disagree ${answers[question.id] === 7 ? 'checked' : ''}`}
                 onClick={() => onClickOption(question.id, 7)}
-              ></Option>
+              ></div>
             </Question>
           ))}
-        </QuestionWrapper>
+        </div>
         <CompleteButton onClick={onClickCompleteButton}>완료</CompleteButton>
-      </>
+      </Wrapper>
     );
   }
 

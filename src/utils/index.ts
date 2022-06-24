@@ -12,7 +12,7 @@ export const convertToDateFormat = (date: Date) => {
   return [year, month, day].join('-');
 };
 
-export const surveyDefaultTemplate = () => {
+export const surveyDefaultTemplate = (): IQuestion[] => {
   const statements: string[] = [
     '다른 사람들에게 자신을 소개하는 것을 어려워 합니다.',
     '종종 주변을 무시하거나 잊어버리는 생각에 빠지곤 합니다.',

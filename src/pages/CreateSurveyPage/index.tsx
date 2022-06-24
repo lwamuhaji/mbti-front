@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ButtonWrapper, Wrapper } from './styles';
+import { AddButton, Wrapper } from './styles';
 import { IQuestion } from 'types/db';
 import CreatedQuestion from 'components/CreatedQuestion';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function CreateSurveyPage() {
   const [questions, setQuestions] = useState<IQuestion[]>([]);
@@ -57,15 +57,7 @@ function CreateSurveyPage() {
           }}
         />
       ))}
-      <ButtonWrapper>
-        <button className="add-button" onClick={createQuestion}>
-          추가하기
-        </button>
-        <br />
-        <button className="submit-button" onClick={onSubmit}>
-          완료!
-        </button>
-      </ButtonWrapper>
+      <AddButton onClick={createQuestion}>+</AddButton>
     </Wrapper>
   );
 }

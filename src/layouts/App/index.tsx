@@ -8,6 +8,7 @@ import CreateSurveyPage from 'pages/CreateSurveyPage';
 import SharePage from 'pages/SharePage';
 import ResultPage from 'pages/ResultPage';
 import MainPage from 'pages/MainPage';
+import NotFoundPage from 'pages/NotFoundPage';
 
 function App() {
   return (
@@ -16,15 +17,17 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainPage />}></Route>
-            <Route path="surveys/*" element={<MainLayout />}>
-              <Route path=":surveyId" element={<QuestionPage />}></Route>
-              <Route path=":surveyId/complete" element={<CompletePage />}></Route>
-              <Route path=":surveyId/share" element={<SharePage />}></Route>
-              <Route path=":surveyId/result" element={<ResultPage />}></Route>
-              <Route path="create" element={<CreateSurveyPage />}></Route>
+            <Route path="/" element={<MainLayout />}>
+              <Route path="" element={<MainPage />}></Route>
+              <Route path="surveys/*">
+                <Route path=":surveyId" element={<QuestionPage />}></Route>
+                <Route path=":surveyId/complete" element={<CompletePage />}></Route>
+                <Route path=":surveyId/share" element={<SharePage />}></Route>
+                <Route path=":surveyId/result" element={<ResultPage />}></Route>
+                <Route path="create" element={<CreateSurveyPage />}></Route>
+              </Route>
+              <Route path="*" element={<NotFoundPage />}></Route>
             </Route>
-            <Route path="*" element={<h1>NotFound</h1>}></Route>
           </Routes>
         </BrowserRouter>
       </div>

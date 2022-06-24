@@ -1,21 +1,25 @@
 import React from 'react';
-import { Footer, Header } from './styles';
+import { Wrapper } from './styles';
 import { Outlet } from 'react-router-dom';
 
 function MainLayout() {
   return (
-    <>
-      <Header>
-        <h1>친구가 보는 나.</h1>
-      </Header>
+    <Wrapper>
+      <header>
+        <h1>
+          <span className="friend">친구</span>
+          <span className="see">가 보는 </span>
+          <span className="me">나</span>.
+        </h1>
+      </header>
       <main>
         <Outlet />
       </main>
-      <Footer>
+      <footer>
         <p>© 2022. lwamuhaji all rights reserved.</p>
         <p>Contact: lwamuhaji@gmail.com</p>
-      </Footer>
-    </>
+      </footer>
+    </Wrapper>
   );
 }
 

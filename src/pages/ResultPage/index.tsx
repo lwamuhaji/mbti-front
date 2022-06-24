@@ -9,8 +9,6 @@ function ResultPage() {
   const { surveyId } = useParams();
   const { isLoading, isError, data, error } = useQuery<ISurveyResponse, Error>(['surveys', surveyId], getSurvey);
 
-  console.log(data);
-
   return (
     <>
       {data?.responses.map((answersheet) => (

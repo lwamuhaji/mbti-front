@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionWrapper, QuestionWrapper, Statement, DecisionWrapper, Caption } from './styles';
+import { OptionWrapper, Wrapper, Statement, DecisionWrapper, Caption } from './styles';
 
 interface Props {
   children: React.ReactElement[];
@@ -8,14 +8,14 @@ interface Props {
 
 function Question({ children, statement }: Props) {
   return (
-    <QuestionWrapper>
-      <Statement>{statement}</Statement>
-      <DecisionWrapper>
-        <Caption>동의</Caption>
-        <OptionWrapper>{children}</OptionWrapper>
-        <Caption>비동의</Caption>
-      </DecisionWrapper>
-    </QuestionWrapper>
+    <Wrapper>
+      <p>{statement}</p>
+      <div>
+        <p>동의</p>
+        <div>{children}</div>
+        <p>비동의</p>
+      </div>
+    </Wrapper>
   );
 }
 

@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
-export const QuestionWrapper = styled.div`
+export const Wrapper = styled.div`
   text-align: center;
+
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #888888;
+  }
 `;
 
 export const Statement = styled.div`
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 20px;
 `;

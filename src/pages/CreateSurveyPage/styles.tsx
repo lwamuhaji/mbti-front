@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   text-align: center;
-  margin-bottom: 50px;
   h1 {
     font-size: 1.5rem;
     line-height: 3rem;
@@ -10,14 +9,14 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  button {
-    margin-bottom: 10px;
-    width: 200px;
-    height: 40px;
-
-    :last-child {
-      margin-bottom: 0;
-    }
-  }
+export const AddButton = styled.button`
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 0;
+  background-color: #3498db;
+  color: white;
 `;
