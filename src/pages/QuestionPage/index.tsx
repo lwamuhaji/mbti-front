@@ -7,6 +7,7 @@ import { getSurvey } from 'apis';
 import { IAnswers, ISurveyResponse, ISurvey } from 'types/db';
 import axios from 'axios';
 import { convertToDateFormat } from 'utils';
+import Modal from 'react-modal';
 
 function QuestionPage() {
   const { surveyId } = useParams();
@@ -19,8 +20,8 @@ function QuestionPage() {
   } = useQuery<ISurvey | ISurveyResponse, Error>(['surveys', surveyId], getSurvey, {
     refetchOnWindowFocus: false,
   });
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [answers, setAnswers] = useState<IAnswers>({});
-  const [answerer, setAnswerer] = useState<string>('');
 
   useEffect(() => {
     if (surveyData && isIResponses(surveyData)) {
@@ -28,12 +29,16 @@ function QuestionPage() {
     }
   }, [surveyData, navigate]);
 
-  const onClickOption = (question_id: number, option_id: number) => {
-    setAnswers({ ...answers, [question_id]: option_id });
+  const openModal = () => {
+    setModalIsOpen(true);
   };
 
-  const onChangeAnswerer = (e: any) => {
-    setAnswerer(e.target.value);
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const onClickOption = (question_id: number, option_id: number) => {
+    setAnswers({ ...answers, [question_id]: option_id });
   };
 
   const isISurvey = (arg: any): arg is ISurvey => {
@@ -45,10 +50,16 @@ function QuestionPage() {
   };
 
   const onClickCompleteButton = () => {
+    openModal();
     if (isISurvey(surveyData) && Object.keys(answers).length !== surveyData?.questions.length) {
       alert('답변을 완료해주세요!');
       return;
     }
+  };
+
+  const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    const answerer = ((e.target as HTMLFormElement).children[2] as HTMLInputElement).value;
     const date = convertToDateFormat(new Date());
     axios
       .post(`/api/surveys/${surveyId}/answersheets`, { answerer, date, answers }, { withCredentials: true })
@@ -73,6 +84,20 @@ function QuestionPage() {
         <button className="complete-button" onClick={onClickCompleteButton}>
           끝
         </button>
+        <Modal
+          appElement={document.getElementById('root') || undefined}
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          className="modal"
+          overlayClassName={'overlay'}
+        >
+          <form onSubmit={onSubmit}>
+            <span>별명을 입력해주세요!</span>
+            <br />
+            <input type="text" />
+            <input type="submit" value="완료" />
+          </form>
+        </Modal>
       </Wrapper>
     );
   }
