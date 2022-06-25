@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from 'layouts/MainLayout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import GlobalStyle from './styles';
+import { GlobalStyle, ModalStyle } from './styles';
 import QuestionPage from 'pages/QuestionPage';
 import CompletePage from 'pages/CompletePage';
 import CreateSurveyPage from 'pages/CreateSurveyPage';
@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <ModalStyle />
       <div className="App">
         <BrowserRouter>
           <Routes>

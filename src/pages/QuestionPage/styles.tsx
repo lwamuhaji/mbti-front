@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  div {
-    margin-bottom: 40px;
-  }
-
-  fieldset {
-    text
+  .questions-wrapper {
+    margin-bottom: 100px;
   }
 
   .complete-button {

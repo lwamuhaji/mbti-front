@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     font-size: 1rem;
     font-weight: bold;
     color: #888888;
-    margin-bottom: 10px;
+    margin: 0 20px 10px 20px;
   }
 
   span {

@@ -10,7 +10,7 @@ interface Props {
 
 function Question({ question, answers, onClickOption }: Props) {
   return (
-    <Wrapper>
+    <Wrapper className="questions-wrapper">
       <p>{question.statement}</p>
       <span className="agree">YES</span>
       <button

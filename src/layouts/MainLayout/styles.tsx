@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     text-align: center;
     background-color: #fef9e7;
     padding: 5px;
+    margin-bottom: 40px;
 
     h1 {
       text-shadow: 4px 4px 2px lightgray;
@@ -33,7 +34,7 @@ export const Wrapper = styled.div`
   }
 
   footer {
-    margin: 0 auto;
+    margin: 40px 0 0 0;
     padding: 8px;
     color: gray;
     font-size: 0.7rem;
