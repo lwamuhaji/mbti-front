@@ -22,7 +22,7 @@ function MainPage() {
   return (
     <Wrapper>
       <button onClick={onClickCreateButton}>내 링크 생성하기</button>
-      <Link to={'/surveys/create'}>직접 만들러 가기</Link>
+      {/* <Link to={'/surveys/create'}>직접 만들러 가기</Link> */}
     </Wrapper>
   );
 }
