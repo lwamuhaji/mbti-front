@@ -1,3 +1,5 @@
+export type options = 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface ISurvey {
   id: string;
   title: string;
@@ -6,12 +8,12 @@ export interface ISurvey {
 }
 
 export interface IQuestion {
-  id: number;
+  id: string;
   statement: string;
 }
 
 export interface IAnswers {
-  [question_id: number]: number;
+  [question_id: string]: options;
 }
 
 export interface IAnswerSheet {
