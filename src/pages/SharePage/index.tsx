@@ -25,8 +25,7 @@ function SharePage() {
       <p>아래 링크를 공유해주세요.</p>
       <div>
         <Link to={`/surveys/${surveyId}`}>{window.location.host + `/surveys/${surveyId}`}</Link>
-        <br />
-        <button onClick={copyLinkToClipboard}>링크 복사하기</button>
+        <br />~{/* <button onClick={copyLinkToClipboard}>링크 복사하기</button> */}
         <button onClick={navigateToResultPage}>결과보러가기</button>
       </div>
     </Wrapper>

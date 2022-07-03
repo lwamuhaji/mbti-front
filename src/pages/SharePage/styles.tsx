@@ -11,6 +11,8 @@ export const Wrapper = styled.div`
     display: inline-block;
     margin-bottom: 10px;
     text-decoration: underline;
+    width: 100%;
+    word-wrap: break-word;
   }
 
   button {
