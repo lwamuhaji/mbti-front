@@ -4,7 +4,7 @@ import { Wrapper } from './styles';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getSurvey } from 'apis';
-import { IAnswers, ISurveyResponse, ISurvey } from 'types/db';
+import { IAnswers, ISurveyResponse, ISurvey, options } from 'types/db';
 import axios from 'axios';
 import { convertToDateFormat } from 'utils';
 import Modal from 'react-modal';
@@ -37,7 +37,7 @@ function QuestionPage() {
     setModalIsOpen(false);
   };
 
-  const onClickOption = (question_id: number, option_id: number) => {
+  const onClickOption = (question_id: string, option_id: options) => {
     setAnswers({ ...answers, [question_id]: option_id });
   };
 
@@ -50,11 +50,11 @@ function QuestionPage() {
   };
 
   const onClickCompleteButton = () => {
-    openModal();
     if (isISurvey(surveyData) && Object.keys(answers).length !== surveyData?.questions.length) {
       alert('답변을 완료해주세요!');
       return;
     }
+    openModal();
   };
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {

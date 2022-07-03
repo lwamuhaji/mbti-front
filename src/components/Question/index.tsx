@@ -1,11 +1,11 @@
 import React from 'react';
-import { IAnswers, IQuestion } from 'types/db';
+import { IAnswers, IQuestion, options } from 'types/db';
 import { Wrapper } from './styles';
 
 interface Props {
   question: IQuestion;
   answers: IAnswers;
-  onClickOption: (question_id: number, option_id: number) => void;
+  onClickOption: (question_id: string, option_id: options) => void;
 }
 
 function Question({ question, answers, onClickOption }: Props) {

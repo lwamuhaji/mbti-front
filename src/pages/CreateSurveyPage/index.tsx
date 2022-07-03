@@ -23,11 +23,11 @@ function CreateSurveyPage() {
   };
 
   const createQuestion = () => {
-    setQuestions(questions.concat({ id: count, statement: '' }));
+    setQuestions(questions.concat({ id: String(count), statement: '' }));
     setCount(count + 1);
   };
 
-  const deleteQuestion = (id: number) => {
+  const deleteQuestion = (id: string) => {
     const result: IQuestion[] = [];
     questions.reduce((result, curr) => {
       if (curr.id !== id) {
@@ -38,7 +38,7 @@ function CreateSurveyPage() {
     setQuestions(result);
   };
 
-  const changeStatement = (id: number, statement: string) => {
+  const changeStatement = (id: string, statement: string) => {
     const nextQuestions = questions?.map((question) => (question.id === id ? { ...question, statement } : question));
     setQuestions(nextQuestions);
   };
