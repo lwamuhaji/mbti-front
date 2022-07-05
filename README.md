@@ -16,4 +16,4 @@
   ![2](./resources/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C4.png)
 
 - 결과화면  
-  ![2](./resources/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C3.png)
+  ![2](./resources/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C3.jpg)
